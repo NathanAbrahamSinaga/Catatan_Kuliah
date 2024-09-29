@@ -1,0 +1,10 @@
+backend/node_modules
+.env
+backend/node_modules
+admin_creation_script.js
+firebaseService.json
+GabunganPenyelamta.txt
+frontend1.txt
+frontend2.txt
+backend1.txt
+backend2.txt
