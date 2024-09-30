@@ -8,18 +8,27 @@ const matakuliahRoutes = require('./routes/matakuliah');
 const catatanRoutes = require('./routes/catatan');
 
 dotenv.config();
+
+
+const corsOptions = {
+  origin: ['https://catatan-kuliah-uty.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+
+app.use(cors(corsOptions));
+
+
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('The API is running');
 });
-
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
 
 app.use('/admin', adminRoutes);
 app.use('/matakuliah', matakuliahRoutes);
