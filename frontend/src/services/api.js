@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "https://catatan-kuliah-api.vercel.app" || "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -13,6 +13,14 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('API Error:', error.response ? error.response.data : error.message);
+    return Promise.reject(error);
+  }
+);
 
 export const fetchMatakuliahList = async () => {
   try {
