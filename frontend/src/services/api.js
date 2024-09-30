@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "localhost://localhost:3000" || "https://backend-lollybtlu-nathanabrahamsinagas-projects.vercel.app";
+const API_URL = "http://localhost:3000" || "https://backend-lollybtlu-nathanabrahamsinagas-projects.vercel.app";
 
 const api = axios.create({
   baseURL: API_URL,
